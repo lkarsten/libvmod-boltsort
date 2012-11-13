@@ -39,7 +39,7 @@ rm -rf %{buildroot}
 %if "%{RHVERSION}" == "EL5"
 %{_mandir}/man3/*.3*
 %else
-/usr/man/man?/*gz
+/usr/share/man/man?/*
 %endif
 
 %changelog
