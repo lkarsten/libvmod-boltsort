@@ -1,0 +1,6 @@
+libvmod-boltsort-varnish-3.0.3 (0.1) unstable; urgency=low
+
+  * First packaged version.
+
+ -- Lasse Karstensen <lasse@varnish-software.com>  Fri, 16 Nov 2012 10:33:09 +0100
+
