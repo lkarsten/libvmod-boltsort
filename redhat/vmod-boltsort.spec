@@ -17,7 +17,6 @@ Fast query string sorting VMOD
 %setup -n libvmod-boltsort
 
 %build
-./autogen.sh
 # this assumes that VARNISHSRC is defined on the rpmbuild command line, like this:
 # rpmbuild -bb --define 'VARNISHSRC /home/user/rpmbuild/BUILD/varnish-3.0.3' redhat/*spec
 ./configure VARNISHSRC=%{VARNISHSRC} VMODDIR=/usr/lib64/varnish/vmods/ --prefix=/usr/
@@ -35,13 +34,9 @@ rm -rf %{buildroot}
 %files
 %defattr(-,root,root,-)
 # /opt/varnish/lib/varnish/vmods/
-/usr/lib64/varnish/vmods/
+%{_libdir}/varnish/vmods/
 %doc /usr/share/doc/%{name}/*
-%if "%{RHVERSION}" == "EL5"
-/usr/man/man?/*
-%else
-/usr/share/man/man?/*
-%endif
+%{_mandir}/man?/*
 
 %changelog
 * Tue Nov 14 2012 Lasse Karstensen <lasse@varnish-software.com> - 0.1-0.20121114
