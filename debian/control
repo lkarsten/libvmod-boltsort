@@ -1,4 +1,4 @@
-Source: libvmod-boltsort-varnish-3.0.3
+Source: libvmod-boltsort
 Section: web
 Priority: extra
 Maintainer: Lasse Karstensen <lasse@varnish-software.com>
@@ -6,7 +6,7 @@ Build-Depends: debhelper (>= 7), build-essential, python-docutils
 Standards-Version: 3.8.1
 Vcs-Git: git://github.com/lkarsten/libvmod-boltsort.git
 
-Package: libvmod-boltsort-varnish-3.0.3
+Package: libvmod-boltsort
 Architecture: all
-Depends: varnish (>=3.0.3~)
+Depends: varnish, ${misc:Depends}
 Description: Boltsort is a fast GET argument sorter VMOD for Varnish.
