@@ -1,4 +1,4 @@
-Summary: Fast query string sorter for Varnish VCL
+Summary: Fast query string sorter for Varnish %{VARNISHVER}
 Name: vmod-boltsort
 Version: 0.1
 Release: 1%{?dist}
