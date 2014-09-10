@@ -1,7 +1,7 @@
 Summary: Fast query string sorter for Varnish %{VARNISHVER}
 Name: vmod-boltsort
 Version: 0.1
-Release: 2%{?dist}
+Release: 3%{?dist}
 License: BSD
 Group: System Environment/Daemons
 Source0: libvmod-boltsort.tar.gz
