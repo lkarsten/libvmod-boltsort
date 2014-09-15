@@ -1,6 +1,6 @@
 AC_PREREQ(2.59)
 AC_COPYRIGHT([Copyright (c) 2011 Varnish Software AS])
-AC_INIT([libvmod-boltsort], [trunk])
+AC_INIT([libvmod-boltsort], [0.2])
 AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_SRCDIR(src/vmod_boltsort.vcc)
 AM_CONFIG_HEADER(config.h)

@@ -1,3 +1,9 @@
+libvmod-boltsort (0.2) unstable; urgency=medium
+
+  * Version bump due to packaging.
+
+ -- Lasse Karstensen <lkarsten@varnish-software.com>  Mon, 15 Sep 2014 15:45:24 +0200
+
 libvmod-boltsort (0.1) unstable; urgency=medium
 
   * Version bump.
