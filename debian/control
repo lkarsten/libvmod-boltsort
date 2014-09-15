@@ -8,5 +8,5 @@ Vcs-Git: git://github.com/lkarsten/libvmod-boltsort.git
 
 Package: libvmod-boltsort
 Architecture: all
-Depends: varnish, ${misc:Depends}
+Depends: varnish, ${Varnish:ABI}, ${misc:Depends}
 Description: Boltsort is a fast GET argument sorter VMOD for Varnish.
