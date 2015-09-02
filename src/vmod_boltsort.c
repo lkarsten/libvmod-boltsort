@@ -4,7 +4,7 @@
 
 #include "vrt.h"
 #include "cache/cache.h"
-
+#include "vcl.h"
 #define MAX_PARAM_COUNT 32
 #define EQUALS(c, h) ((c == h) || (c == '\0' && h == '&') || (c == '&' && h == '\0'))
 #define ENDS(s) (s == '&' || s == '\0') 
@@ -36,7 +36,7 @@ static inline int param_copy(char *dst, char *src, char *last_param)
 }
 
 //Varnish vmod requires this
-int init_function(struct vmod_priv *priv, const struct VCL_conf *conf)
+int init_function(VRT_CTX, struct vmod_priv *priv, enum vcl_event_e e)
 {
 
     return 0;
@@ -44,7 +44,8 @@ int init_function(struct vmod_priv *priv, const struct VCL_conf *conf)
 }
 
 //sort query string
-const char * vmod_sort(const struct vrt_ctx *ctx, const char *url)
+VCL_STRING
+vmod_sort(VRT_CTX, VCL_STRING url)
 {
 
     if (url == NULL) {
