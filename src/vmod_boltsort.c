@@ -3,12 +3,14 @@
 #include <string.h>
 
 #include "vrt.h"
-#include "bin/varnishd/cache.h"
+#include "cache/cache.h"
+
+#include "vcc_if.h"
 
 #define MAX_PARAM_COUNT 32
 #define EQUALS(c, h) ((c == h) || (c == '\0' && h == '&') || (c == '&' && h == '\0'))
-#define ENDS(s) (s == '&' || s == '\0') 
-#define NOT_ENDS(s) (s != '&' && s != '\0') 
+#define ENDS(s) (s == '&' || s == '\0')
+#define NOT_ENDS(s) (s != '&' && s != '\0')
 
 static const char TERMINATORS[2] = {'\0', '&'};
 
@@ -35,16 +37,9 @@ static inline int param_copy(char *dst, char *src, char *last_param)
 
 }
 
-//Varnish vmod requires this
-int init_function(struct vmod_priv *priv, const struct VCL_conf *conf)
-{
-
-    return 0;
-
-}
-
 //sort query string
-const char * vmod_sort(struct sess *sp, const char *url)
+VCL_STRING
+vmod_sort(VRT_CTX, VCL_STRING url)
 {
 
     if (url == NULL) {
@@ -94,16 +89,14 @@ const char * vmod_sort(struct sess *sp, const char *url)
         }
     }
 
-    //there is nothing after & 
+    //there is nothing after &
     //eg: http://127.0.0.1/?me=1&
     if (param_count == 1) {
         return url;
     }
 
     //allocate space for sorted url
-    struct ws *ws = sp->wrk->ws;
-    dst_url = WS_Alloc(ws, strchr(param, '\0') - url + 1);
-    WS_Assert(ws);
+    dst_url = WS_Alloc(ctx->ws, strchr(param, '\0') - url + 1);
 
     //if alloc fails return as is
     if(dst_url == NULL) {
@@ -114,7 +107,7 @@ const char * vmod_sort(struct sess *sp, const char *url)
     char* cp = memcpy(dst_url, url, qs_index) + qs_index;
 
     //get rid of all empty params /test/?a&&&
-    for(p = 0; p < param_count - 1; p++) { 
+    for(p = 0; p < param_count - 1; p++) {
         if (params[p][0] != '\0' && params[p][0] != '&') {
             break;
         }
