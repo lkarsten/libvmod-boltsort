@@ -2,6 +2,8 @@
 vmod_boltsort
 =============
 
+**important note:this vmod is obsolete as its goals can be achieved using the `.querysort()` function of `vmod_std` (bundled with Varnish)**
+
 -----------------------
 Varnish boltsort Module
 -----------------------
